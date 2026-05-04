@@ -1,30 +1,15 @@
 package com.krakedev.artesanal;
 
 public class Maquina {
+	private String codigo;
 	private String nombreCerveza;
 	private String descripcion;
 	private double precioPorMl;
 	private double capacidadMaxima;
 	private double cantidadActual;
 
-	public Maquina(String nombreCerveza, String descripcion, double precioPorMl, double capacidadMaxima) {
-
-		this.nombreCerveza = nombreCerveza;
-		this.descripcion = descripcion;
-		this.precioPorMl = precioPorMl;
-		this.capacidadMaxima = capacidadMaxima;
-		this.cantidadActual = 0;
-
-	}
-
-	public Maquina(String nombreCerveza, String descripcion, double precioPorMl) {
-
-		this.nombreCerveza = nombreCerveza;
-		this.descripcion = descripcion;
-		this.precioPorMl = precioPorMl;
-		this.capacidadMaxima = 1000;
-		this.cantidadActual = 0;
-
+	public String getCodigo() {
+		return codigo;
 	}
 
 	public String getNombreCerveza() {
@@ -55,46 +40,69 @@ public class Maquina {
 		return capacidadMaxima;
 	}
 
+	public void setCapacidadMaxima(double capacidadMaxima) {
+		this.capacidadMaxima = capacidadMaxima;
+	}
+
 	public double getCantidadActual() {
 		return cantidadActual;
 	}
 
-	public void imprimir() {
-		String mensaje;
-		mensaje = "nombre cerveza : " + nombreCerveza
-				+ ", Descripcion " + descripcion 
-				+ ", capacidad máxima " + capacidadMaxima 
-				+ ",precio por ml " + precioPorMl
-				+ ", cantidad Actual " + cantidadActual;
-
-		System.out.println(mensaje);
-
+	public Maquina() {
 	}
-	
+
+	public Maquina(String codigo, String nombreCerveza, String descripcion, double precioPorMl,
+			double capacidadMaxima) {
+		this.codigo = codigo;
+		this.nombreCerveza = nombreCerveza;
+		this.descripcion = descripcion;
+		this.precioPorMl = precioPorMl;
+		this.capacidadMaxima = capacidadMaxima;
+		this.cantidadActual = 0;
+	}
+
+	public Maquina(String codigo, String nombreCerveza, String descripcion, double precioPorMl) {
+
+		this.codigo = codigo;
+		this.nombreCerveza = nombreCerveza;
+		this.descripcion = descripcion;
+		this.precioPorMl = precioPorMl;
+		this.capacidadMaxima = 10000;
+		this.cantidadActual = 0;
+	}
+
 	public void llenarMaquina() {
-		this.cantidadActual = this.capacidadMaxima - 100 ;
-		
+		this.cantidadActual = this.capacidadMaxima - 200;
 	}
-	
+
 	public boolean recargarCerveza(double cantidad) {
 		double limitePermitido;
-		limitePermitido = capacidadMaxima - 100;
-		
-		if(cantidadActual +cantidad <= limitePermitido ) {
-			
-			cantidadActual = cantidadActual+cantidad;
-			return true ;
-		
-		}else {
+		limitePermitido = capacidadMaxima - 200;
+
+		if (cantidadActual + cantidad <= limitePermitido) {
+			cantidadActual = cantidadActual + cantidad;
+			return true;
+		} else {
 			return false;
-			
-					
-			
-			
-					
-			
 		}
-		
 	}
 
+	public double servirCerveza(double cantidad) {
+		if (cantidadActual >= cantidad) {
+			cantidadActual = cantidadActual - cantidad;
+			double valor;
+			valor = cantidad * precioPorMl;
+			return valor;
+		} else {
+			return 0;
+		}
+	}
+
+	public void imprimir() {
+		String mensaje = "Codigo: " + codigo + "Nombre cerveza: " + nombreCerveza + ", Descripcion: " + descripcion
+				+ ", Precio por ml: " + precioPorMl + ", Capacidad Maxima: " + capacidadMaxima + ", Cantidad actual: "
+				+ cantidadActual;
+
+		System.out.println(mensaje);
+	}
 }
