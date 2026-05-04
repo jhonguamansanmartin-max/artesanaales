@@ -5,13 +5,8 @@ import com.krakedev.artesanal.Maquina;
 public class TestAtributos {
 
 	public static void main(String[] args) {
-		
-		Maquina rubia = new Maquina("Pilsener" , "cervesa artesanal" , 0.02 , 1000) ;
-		
-		rubia.imprimir();
-	
-		rubia.setDescripcion("Golden");
-		rubia.setDescripcion("aroma mas intenso");
+		// TODO Auto-generated method stub
+		Maquina rubia = new Maquina("CRV_97", "Pilsener", "cerveza rubia", 0.02, 10000);
 		rubia.imprimir();
 	}
 
