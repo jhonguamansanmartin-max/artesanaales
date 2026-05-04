@@ -1,4 +1,4 @@
-package com.krakedev.artesanal.testJUnit;
+package artesanal.testJUnit;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertNull;
